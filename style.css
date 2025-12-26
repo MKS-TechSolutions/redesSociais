@@ -25,6 +25,8 @@ body.app-root {
 }
 
 /* Layout principal: cabeçalho + conteúdo + footer, sem scroll */
+
+
 .page {
     height: 100svh; /* usa viewport visual de mobile */
     width: 100%;
@@ -32,7 +34,7 @@ body.app-root {
     grid-template-rows: auto 1fr auto; /* header / main / footer */
     align-items: start;
     justify-items: center;
-    padding-top: 50px;
+    padding-left: var(--page-pad);
     padding-right: var(--page-pad);
     /* considera safe area no topo e fundo */
     padding-top: env(safe-area-inset-top, 8px);
@@ -48,7 +50,7 @@ body.app-root {
     flex-direction: column;
     align-items: center;
     gap: 8px;         /* espaçamento controlado */
-    padding-top: 6px; /* aproxima do topo */
+    padding-top: 90px; /* aproxima do topo */
 }
 
 /* Logo menor para caber tudo */
@@ -85,7 +87,7 @@ body.app-root {
     font-size: 1.5rem;
     line-height: 1.2;
     font-weight: 700;
-    margin: 0;
+    margin-top: 20px;
     text-align: center;
 }
 
@@ -97,7 +99,7 @@ body.app-root {
     color: var(--text-gray);
     font-size: 0.9rem;
     line-height: 1.25;
-    margin: 0;
+    margin-bottom: 20px;
     text-align: center;
 }
 
@@ -115,7 +117,9 @@ body.app-root {
 }
 
 /* Cartões compactos e clicáveis */
+
 .link-card {
+    margin-bottom: 4%;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -217,4 +221,3 @@ body.app-root {
 @media (min-width: 768px) {
     .page { max-width: 520px; }
 }
-
