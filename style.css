@@ -104,3 +104,27 @@ html, body {
 @keyframes fadeInUp {
     to { opacity: 1; transform: translateY(0); }
 }
+
+
+html, body {
+    height: 100vh;              /* ocupa toda a altura da tela */
+    margin: 0;
+    padding: 0;
+    overflow: hidden;           /* remove scroll */
+}
+
+.container-main {
+    max-width: 420px;
+    width: 100%;
+    height: calc(100vh - 60px); /* altura total menos o footer */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;    /* centraliza verticalmente */
+    align-items: center;
+    text-align: center;
+}
+
+footer.footer-area {
+    height: 60px;               /* altura fixa do rodapé */
+    flex-shrink: 0;
+}
