@@ -41,7 +41,8 @@ body.app-root {
     padding-bottom: env(safe-area-inset-bottom, 8px);
     box-sizing: border-box;
     max-width: 480px;   /* limita largura em telas maiores */
-    margin: 0 auto;
+    margin: 10px auto; /* centraliza horizontalmente */
+    padding: 30px;
 }
 
 /* Header enxuto, sem margens grandes */
@@ -50,7 +51,7 @@ body.app-root {
     flex-direction: column;
     align-items: center;
     gap: 8px;         /* espaçamento controlado */
-    padding-top: 90px; /* aproxima do topo */
+    padding-top: 50px; /* aproxima do topo */
 }
 
 /* Logo menor para caber tudo */
@@ -179,7 +180,7 @@ body.app-root {
     display: flex;
     align-items: center;
     justify-content: center;
-    padding: 0 10px;
+    padding: 0 ;
     box-sizing: border-box;
 }
 
