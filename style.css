@@ -10,11 +10,11 @@ body {
     color: white;
     height: 100vh;
     margin: 0;
+    overflow-x: hidden;
 }
 
 .container-main {
     max-width: 420px;
-    max-height: 100vh;
 }
 
 /* Logo Area e Animação de Pulsação */
@@ -112,3 +112,4 @@ body {
 @keyframes fadeInUp {
     to { opacity: 1; transform: translateY(0); }
 }
+
