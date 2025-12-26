@@ -5,28 +5,25 @@
     --mks-cyan: #3fb1e3;
 }
 
-/* Trava o scroll no HTML e Body */
-html, body {
-    height: 100%;
-    margin: 0;
-    padding: 0;
-    overflow: hidden !important;
+body {
     background-color: var(--bg-dark);
     color: white;
+    height: 100vh;
+    margin: 0;
 }
 
 .container-main {
-    max-width: 400px;
-    height: 100%;
+    max-width: 420px;
+    max-height: 100vh;
 }
 
-/* Logo Area mais compacta para economizar espaço vertical */
+/* Logo Area e Animação de Pulsação */
 .logo-area {
     background: white;
-    width: 130px; 
-    height: 90px;
-    border-radius: 20px;
-    box-shadow: 0 0 25px rgba(137, 87, 229, 0.4);
+    width: 140px; /* Reduzido levemente para caber na tela sem scroll */
+    height: 100px;
+    border-radius: 22px;
+    box-shadow: 0 0 30px rgba(137, 87, 229, 0.4);
 }
 
 .pulse-animation {
@@ -34,26 +31,18 @@ html, body {
 }
 
 @keyframes pulse {
-    0% { transform: scale(1); }
-    50% { transform: scale(1.05); }
-    100% { transform: scale(1); }
+    0% { transform: scale(1); box-shadow: 0 0 30px rgba(137, 87, 229, 0.4); }
+    50% { transform: scale(1.05); box-shadow: 0 0 50px rgba(63, 177, 227, 0.6); }
+    100% { transform: scale(1); box-shadow: 0 0 30px rgba(137, 87, 229, 0.4); }
 }
 
 .logo {
-    max-width: 80%;
-    max-height: 80%;
+    max-width: 85%;
+    max-height: 85%;
     object-fit: contain;
 }
 
-.welcome-text {
-    font-size: 1.5rem;
-    font-weight: 700;
-}
-
-.welcome-text span { color: var(--mks-cyan); }
-.subtitle { color: #8b949e; font-size: 0.85rem; }
-
-/* Link Cards compactos para evitar estouro de altura */
+/* Link Cards com Sombra Roxo e Azul */
 .link-card {
     display: flex;
     align-items: center;
@@ -61,23 +50,31 @@ html, body {
     background-color: var(--card-bg);
     color: white;
     text-decoration: none;
-    padding: 12px; /* Reduzido */
-    margin-bottom: 10px; /* Reduzido */
-    border-radius: 12px;
+    padding: 14px; /* Mais compacto */
+    margin-bottom: 12px;
+    border-radius: 15px;
     font-weight: 600;
     border: 1px solid rgba(255, 255, 255, 0.05);
     transition: all 0.3s ease;
-    box-shadow: -4px 4px 10px rgba(63, 177, 227, 0.15), 
-                 4px -4px 10px rgba(137, 87, 229, 0.15);
+    box-shadow: -6px 6px 15px rgba(63, 177, 227, 0.2), 
+                 6px -6px 15px rgba(137, 87, 229, 0.2);
 }
 
-.link-card:active { transform: scale(0.96); }
-
-/* Robô Flutuante menor */
-.robot-container {
-    font-size: 2rem;
+.link-card i {
+    font-size: 1.2rem;
     color: var(--mks-cyan);
-    filter: drop-shadow(0 0 8px var(--mks-purple));
+}
+
+.link-card:active {
+    transform: scale(0.96);
+    box-shadow: 0 0 25px rgba(137, 87, 229, 0.5);
+}
+
+/* Robô Animado Flutuante */
+.robot-container {
+    font-size: 2.5rem;
+    color: var(--mks-cyan);
+    filter: drop-shadow(0 0 10px var(--mks-purple));
 }
 
 .floating-robot {
@@ -86,25 +83,29 @@ html, body {
 }
 
 @keyframes float {
-    0%, 100% { transform: translateY(0); }
-    50% { transform: translateY(-10px); }
+    0% { transform: translateY(0px) rotate(0deg); }
+    50% { transform: translateY(-12px) rotate(5deg); }
+    100% { transform: translateY(0px) rotate(0deg); }
 }
 
-/* Footer fixo na base */
+/* Textos e Rodapé */
+.welcome-text span { color: var(--mks-cyan); }
+.subtitle { color: #8b949e; font-size: 0.9rem; }
+
 .footer-area {
     text-align: center;
-    padding: 10px;
+    padding: 10px 10px;
     border-top: 1px solid #21262d;
     background-color: var(--bg-dark);
 }
 
-.footer-text { font-size: 0.7rem; color: #484f58; }
+.footer-text { font-size: 0.75rem; color: #484f58; }
 
 /* Animação de Entrada */
 .animate-btn {
     opacity: 0;
-    transform: translateY(15px);
-    animation: fadeInUp 0.5s ease forwards;
+    transform: translateY(20px);
+    animation: fadeInUp 0.6s ease forwards;
     animation-delay: calc(var(--order) * 0.1s);
 }
 
