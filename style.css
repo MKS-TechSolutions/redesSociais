@@ -3,29 +3,65 @@
     --card-bg: #161b22;
     --mks-purple: #8957e5;
     --mks-cyan: #3fb1e3;
+    --text-gray: #8b949e;
+
+    /* Alturas */
+    --footer-h: 56px;
+    --page-pad: max(env(safe-area-inset-left), 12px);
 }
 
-/* Força o HTML e Body a não terem scroll de jeito nenhum */
+/* Raiz da aplicação ocupa a viewport visual real (100svh) */
 html, body {
     height: 100%;
+}
+
+body.app-root {
     margin: 0;
     padding: 0;
-    overflow: hidden !important;
     background-color: var(--bg-dark);
-    color: white;
+    color: #fff;
+    font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+    overflow: hidden; /* remove scroll global */
 }
 
-.container-main {
-    max-width: 400px;
-    max-height: 100%;
+/* Layout principal: cabeçalho + conteúdo + footer, sem scroll */
+.page {
+    height: 100svh; /* usa viewport visual de mobile */
+    width: 100%;
+    display: grid;
+    grid-template-rows: auto 1fr auto; /* header / main / footer */
+    align-items: start;
+    justify-items: center;
+    padding-left: var(--page-pad);
+    padding-right: var(--page-pad);
+    /* considera safe area no topo e fundo */
+    padding-top: env(safe-area-inset-top, 8px);
+    padding-bottom: env(safe-area-inset-bottom, 8px);
+    box-sizing: border-box;
+    max-width: 480px;   /* limita largura em telas maiores */
+    margin: 0 auto;
 }
 
+/* Header enxuto, sem margens grandes */
+.header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;         /* espaçamento controlado */
+    padding-top: 6px; /* aproxima do topo */
+}
+
+/* Logo menor para caber tudo */
 .logo-area {
     background: white;
-    width: 120px; /* Reduzi mais para garantir espaço */
-    height: 90px;
+    width: 140px;
+    height: 100px;
     border-radius: 20px;
-    box-shadow: 0 0 25px rgba(137, 87, 229, 0.4);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 0 24px rgba(137, 87, 229, 0.35);
+    will-change: transform;
 }
 
 .pulse-animation {
@@ -33,25 +69,52 @@ html, body {
 }
 
 @keyframes pulse {
-    0% { transform: scale(1); }
-    50% { transform: scale(1.05); }
-    100% { transform: scale(1); }
+    0% { transform: scale(1); box-shadow: 0 0 24px rgba(137, 87, 229, 0.35); }
+    50% { transform: scale(1.04); box-shadow: 0 0 38px rgba(63, 177, 227, 0.5); }
+    100% { transform: scale(1); box-shadow: 0 0 24px rgba(137, 87, 229, 0.35); }
 }
 
 .logo {
-    max-width: 80%;
-    max-height: 80%;
+    max-width: 85%;
+    max-height: 85%;
     object-fit: contain;
 }
 
+/* Títulos compactos */
 .welcome-text {
-    font-size: 1.4rem; /* Um pouco menor para telas pequenas */
+    font-size: 1.5rem;
+    line-height: 1.2;
     font-weight: 700;
+    margin: 0;
+    text-align: center;
 }
 
-.welcome-text span { color: var(--mks-cyan); }
-.subtitle { color: #8b949e; font-size: 0.85rem; }
+.welcome-text span {
+    color: var(--mks-cyan);
+}
 
+.subtitle {
+    color: var(--text-gray);
+    font-size: 0.9rem;
+    line-height: 1.25;
+    margin: 0;
+    text-align: center;
+}
+
+/* Main ocupa o espaço disponível entre header e footer */
+.links-container {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    justify-content: start;
+    gap: 12px;
+    padding-top: 8px;
+    padding-bottom: 8px;
+    overflow: hidden; /* evita criar scroll */
+}
+
+/* Cartões compactos e clicáveis */
 .link-card {
     display: flex;
     align-items: center;
@@ -59,72 +122,98 @@ html, body {
     background-color: var(--card-bg);
     color: white;
     text-decoration: none;
-    padding: 12px; /* Reduzi o padding interno */
-    margin-bottom: 8px; /* Reduzi a margem entre eles */
-    border-radius: 12px;
+    padding: 14px;
+    border-radius: 14px;
     font-weight: 600;
-    font-size: 0.95rem;
-    border: 1px solid rgba(255, 255, 255, 0.05);
-    transition: all 0.3s ease;
-    box-shadow: -4px 4px 10px rgba(63, 177, 227, 0.15), 
-                 4px -4px 10px rgba(137, 87, 229, 0.15);
+    border: 1px solid rgba(255, 255, 255, 0.06);
+    transition: transform 0.2s ease, box-shadow 0.2s ease, background-color 0.2s ease, opacity 0.2s ease;
+    box-shadow: -6px 6px 14px rgba(63, 177, 227, 0.14), 6px -6px 14px rgba(137, 87, 229, 0.14);
+    text-align: center;
 }
 
-.robot-container {
-    font-size: 2rem;
+.link-card i {
+    font-size: 1.1rem;
     color: var(--mks-cyan);
-    filter: drop-shadow(0 0 8px var(--mks-purple));
-    height: 40px; /* Altura fixa para não empurrar o layout */
+}
+
+.link-card:active {
+    transform: scale(0.97);
+    box-shadow: 0 0 20px rgba(137, 87, 229, 0.35);
+    background-color: #1c2128;
+}
+
+/* Robô ajustado e com visibilidade condicional */
+.robot-container {
+    font-size: 2.4rem;
+    color: var(--mks-cyan);
+    filter: drop-shadow(0 0 10px var(--mks-purple));
+    margin-top: 4px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .floating-robot {
+    display: inline-block;
     animation: float 2.5s infinite ease-in-out;
+    will-change: transform;
 }
 
 @keyframes float {
-    0%, 100% { transform: translateY(0); }
-    50% { transform: translateY(-8px); }
+    0% { transform: translateY(0px) rotate(0deg); }
+    50% { transform: translateY(-10px) rotate(4deg); }
+    100% { transform: translateY(0px) rotate(0deg); }
 }
 
+/* Footer com altura fixa */
 .footer-area {
+    width: 100%;
+    height: var(--footer-h);
     text-align: center;
-    padding: 8px;
     border-top: 1px solid #21262d;
+    background-color: var(--bg-dark);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0 10px;
+    box-sizing: border-box;
 }
 
-.footer-text { font-size: 0.7rem; color: #484f58; }
+.footer-text {
+    font-size: 0.75rem;
+    color: #484f58;
+    margin: 0;
+}
 
+/* Animação de entrada dos botões */
 .animate-btn {
     opacity: 0;
-    transform: translateY(10px);
+    transform: translateY(18px);
     animation: fadeInUp 0.5s ease forwards;
-    animation-delay: calc(var(--order) * 0.1s);
+    animation-delay: calc(var(--order) * 0.12s);
 }
 
 @keyframes fadeInUp {
-    to { opacity: 1; transform: translateY(0); }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
 
-
-html, body {
-    height: 100vh;              /* ocupa toda a altura da tela */
-    margin: 0;
-    padding: 0;
-    overflow: hidden;           /* remove scroll */
+/* Ajustes finos para telas muito baixas (por exemplo, com teclado ou barras grandes) */
+@media (max-height: 680px) {
+    .logo-area { width: 128px; height: 92px; }
+    .welcome-text { font-size: 1.4rem; }
+    .subtitle { font-size: 0.86rem; }
+    .link-card { padding: 12px; }
+    .robot-container { font-size: 2.2rem; }
 }
 
-.container-main {
-    max-width: 420px;
-    width: 100%;
-    height: calc(100vh - 60px); /* altura total menos o footer */
-    display: flex;
-    flex-direction: column;
-    justify-content: center;    /* centraliza verticalmente */
-    align-items: center;
-    text-align: center;
+@media (max-height: 600px) {
+    .robot-container { display: none; } /* esconde robô para garantir que tudo caiba */
+    .links-container { gap: 10px; }
 }
 
-footer.footer-area {
-    height: 60px;               /* altura fixa do rodapé */
-    flex-shrink: 0;
+@media (min-width: 768px) {
+    .page { max-width: 520px; }
 }
