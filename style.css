@@ -42,7 +42,7 @@ body.app-root {
     box-sizing: border-box;
     max-width: 480px;   /* limita largura em telas maiores */
     margin: 10px auto; /* centraliza horizontalmente */
-    padding: 20px;
+    padding: 10px;
 }
 
 /* Header enxuto, sem margens grandes */
@@ -65,6 +65,11 @@ body.app-root {
     justify-content: center;
     box-shadow: 0 0 24px rgba(137, 87, 229, 0.35);
     will-change: transform;
+}
+
+.box-shadow {
+    box-shadow: 1px 0 100px var(--mks-purple);
+    border-radius: 20px;
 }
 
 .pulse-animation {
@@ -92,9 +97,6 @@ body.app-root {
     text-align: center;
 }
 
-.welcome-text span {
-    color: var(--mks-cyan);
-}
 
 .subtitle {
     color: var(--text-gray);
@@ -112,8 +114,7 @@ body.app-root {
     align-items: stretch;
     justify-content: start;
     gap: 12px;
-    padding-top: 8px;
-    padding-bottom: 8px;
+    padding: 10px 30px;
     overflow: hidden; /* evita criar scroll */
 }
 
@@ -128,11 +129,11 @@ body.app-root {
     color: white;
     text-decoration: none;
     padding: 14px;
-    border-radius: 14px;
+    border-radius: 100px;
     font-weight: 600;
     border: 1px solid rgba(255, 255, 255, 0.06);
     transition: transform 0.2s ease, box-shadow 0.2s ease, background-color 0.2s ease, opacity 0.2s ease;
-    box-shadow: -6px 6px 14px rgba(63, 177, 227, 0.14), 6px -6px 14px rgba(137, 87, 229, 0.14);
+    box-shadow: 1px 0 10px var(--mks-purple), -1px 0 10px var(--mks-purple);
     text-align: center;
 }
 
@@ -170,6 +171,10 @@ body.app-root {
     100% { transform: translateY(0px) rotate(0deg); }
 }
 
+.text-shadow {
+    text-shadow: 10px 2px 30px var(--mks-purple);
+}
+
 /* Footer com altura fixa */
 .footer-area {
     width: 100%;
@@ -186,7 +191,7 @@ body.app-root {
 
 .footer-text {
     font-size: 0.75rem;
-    color: #484f58;
+    color: #858585;
     margin: 0;
 }
 
