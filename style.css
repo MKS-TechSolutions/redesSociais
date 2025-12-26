@@ -32,7 +32,7 @@ body.app-root {
     grid-template-rows: auto 1fr auto; /* header / main / footer */
     align-items: start;
     justify-items: center;
-    padding-left: var(--page-pad);
+    padding-top: 50px;
     padding-right: var(--page-pad);
     /* considera safe area no topo e fundo */
     padding-top: env(safe-area-inset-top, 8px);
@@ -217,3 +217,4 @@ body.app-root {
 @media (min-width: 768px) {
     .page { max-width: 520px; }
 }
+
