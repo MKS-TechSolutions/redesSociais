@@ -1,0 +1,141 @@
+:root {
+    --bg-dark: #0d1117;
+    --card-bg: #161b22;
+    --mks-purple: #8957e5;
+    --mks-cyan: #3fb1e3;
+    --text-gray: #8b949e;
+}
+
+body {
+    background-color: var(--bg-dark);
+    color: white;
+    font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+    overflow-x: hidden;
+}
+
+.container-main {
+    max-width: 420px;
+    width: 100%;
+}
+
+/* Logo Area e Animação de Pulsação */
+.logo-area {
+    background: white;
+    width: 160px;
+    height: 120px;
+    border-radius: 22px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto;
+    box-shadow: 0 0 30px rgba(137, 87, 229, 0.4);
+    will-change: transform;
+}
+
+.pulse-animation {
+    animation: pulse 3s infinite ease-in-out;
+}
+
+@keyframes pulse {
+    0% { transform: scale(1); box-shadow: 0 0 30px rgba(137, 87, 229, 0.4); }
+    50% { transform: scale(1.05); box-shadow: 0 0 50px rgba(63, 177, 227, 0.6); }
+    100% { transform: scale(1); box-shadow: 0 0 30px rgba(137, 87, 229, 0.4); }
+}
+
+.logo {
+    max-width: 85%;
+    max-height: 85%;
+    object-fit: contain;
+}
+
+/* Link Cards - Efeito de Brilho Dual */
+.link-card {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--card-bg);
+    color: white;
+    text-decoration: none;
+    padding: 18px;
+    margin-bottom: 18px;
+    border-radius: 15px;
+    font-weight: 600;
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    /* Box Shadow Roxo e Azul misturados */
+    box-shadow: -6px 6px 15px rgba(63, 177, 227, 0.15), 
+                 6px -6px 15px rgba(137, 87, 229, 0.15);
+}
+
+.link-card i {
+    font-size: 1.2rem;
+    color: var(--mks-cyan);
+}
+
+.link-card:active {
+    transform: scale(0.96);
+    box-shadow: 0 0 25px rgba(137, 87, 229, 0.4);
+    background-color: #1c2128;
+}
+
+/* Robô Animado Flutuante */
+.robot-container {
+    font-size: 3rem;
+    color: var(--mks-cyan);
+    filter: drop-shadow(0 0 10px var(--mks-purple));
+    margin-top: 2rem;
+}
+
+.floating-robot {
+    display: inline-block;
+    animation: float 2.5s infinite ease-in-out;
+    will-change: transform;
+}
+
+@keyframes float {
+    0% { transform: translateY(0px) rotate(0deg); }
+    50% { transform: translateY(-15px) rotate(5deg); }
+    100% { transform: translateY(0px) rotate(0deg); }
+}
+
+/* Textos e Footer */
+.welcome-text {
+    font-size: 1.7rem;
+    font-weight: 700;
+}
+
+.welcome-text span { 
+    color: var(--mks-cyan); 
+}
+
+.subtitle { 
+    color: var(--text-gray); 
+    font-size: 0.95rem; 
+}
+
+.footer-area { 
+    text-align: center; 
+    padding: 20px 10px; 
+    border-top: 1px solid #21262d; 
+    background-color: var(--bg-dark);
+}
+
+.footer-text { 
+    font-size: 0.75rem; 
+    color: #484f58; 
+}
+
+/* Animações de Entrada */
+.animate-btn {
+    opacity: 0;
+    transform: translateY(25px);
+    animation: fadeInUp 0.6s ease forwards;
+    animation-delay: calc(var(--order) * 0.15s);
+}
+
+@keyframes fadeInUp {
+    to { 
+        opacity: 1; 
+        transform: translateY(0); 
+    }
+}
