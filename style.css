@@ -42,7 +42,7 @@ body.app-root {
     box-sizing: border-box;
     max-width: 480px;   /* limita largura em telas maiores */
     margin: 10px auto; /* centraliza horizontalmente */
-    padding: 30px;
+    padding: 20px;
 }
 
 /* Header enxuto, sem margens grandes */
@@ -51,7 +51,7 @@ body.app-root {
     flex-direction: column;
     align-items: center;
     gap: 8px;         /* espaçamento controlado */
-    padding-top: 50px; /* aproxima do topo */
+    padding-top: 30px; /* aproxima do topo */
 }
 
 /* Logo menor para caber tudo */
